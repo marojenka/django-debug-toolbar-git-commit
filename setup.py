@@ -1,19 +1,19 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='django-debug-toolbar-git-panel',
+    name='django-debug-toolbar-git-status',
     version='0.0.1',
     description='A git log panel for the Django Debug Toolbar',
     long_description=open('README.md').read(),
     # Get more strings from http://www.python.org/pypi?:action=list_classifiers
-    author='Simon Hewitt',
-    author_email='si@sjhewitt.co.uk',
-    url='https://github.com/sjhewitt/django-debug-toolbar-git-panel',
-    download_url='https://github.com/github.com/sjhewitt/django-debug-toolbar-git-panel/downloads',
+    author='Mark Selshot',
+    author_email='mirkerz@gmail.com',
+    url='https://github.com/sjhewitt/django-debug-toolbar-git-status',
+    download_url='https://github.com/github.com/sjhewitt/django-debug-toolbar-git-status/downloads',
     license='BSD',
     packages=find_packages(exclude=('tests', 'example')),
     tests_require=[
-        'django>=1.3,<1.5',
+        'django>=1.5,<1.7',
     ],
     test_suite='runtests.runtests',
     include_package_data=True,

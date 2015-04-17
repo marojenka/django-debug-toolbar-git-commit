@@ -2,9 +2,9 @@
 Git Log Debug Toolbar Panel
 ===========================
 
-The Git Log Debug Toolbar Panel is an add-on for Django Debug Toolbar for 
-listing the recent commits to the project.
-
+Fork of sjhewitt's Debug Toolbar Panel add-on to collect information 
+about resent git commits. 
+Origing: ``https://github.com/sjhewitt/django-debug-toolbar-git-panel/commit/``.
 
 Installation
 ============
@@ -19,6 +19,5 @@ Configuration
 
 - ``GIT_COMMIT_COUNT`` lets you set the number of commits to show in the panel (defaults to 20.)
 
-- ``GIT_COMMIT_URL`` (optional) lets you specify the link to the base url to link to the commit
+- ``GIT_COMMIT_URL`` (optional) lets you specify the link to the base url to link to the commit.
   
-  e.g. ``https://github.com/sjhewitt/django-debug-toolbar-git-panel/commit/`` for this project.
