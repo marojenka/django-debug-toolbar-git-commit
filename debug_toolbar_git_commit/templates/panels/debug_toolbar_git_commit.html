@@ -1,0 +1,24 @@
+<table>
+    <thead>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Author</th>
+        <th>Message</th>
+    </thead>
+    <tbody>
+        {% for row in log %}
+        <tr class="{% cycle 'djDebugOdd' 'djDebugEven' %}">
+            <td>
+                {% if commit_url %}
+                <a href="{{ commit_url }}{{ row.id }}">{{ row.id }}</a>
+                {% else %}
+                {{ row.id }}
+                {% endif %}
+            </td>
+            <td>{{ row.date }}</td>
+            <td>{{ row.author_name }}</td>
+            <td>{{ row.message }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

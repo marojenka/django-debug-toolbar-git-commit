@@ -1,4 +1,3 @@
-from django.template import Template, Context
 from django.conf import settings
 from debug_toolbar.panels import DebugPanel
 
@@ -17,59 +16,30 @@ try:
 except CalledProcessError, e:
     GIT_LOG = []
 
-_TEMPLATE_MARKUP = """<table>
-    <thead>
-        <th>ID</th>
-        <th>Date</th>
-        <th>Author</th>
-        <th>Message</th>
-    </thead>
-    <tbody>
-        {% for row in log %}
-        <tr class="{% cycle 'djDebugOdd' 'djDebugEven' %}">
-            <td>
-                {% if commit_url %}
-                <a href="{{ commit_url }}{{ row.id }}">{{ row.id }}</a>
-                {% else %}
-                {{ row.id }}
-                {% endif %}
-            </td>
-            <td>{{ row.date }}</td>
-            <td>{{ row.author_name }}</td>
-            <td>{{ row.message }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-"""
-
-
-class RecentCommitsDebugPanel(DebugPanel):
+class GitCommitStatus(DebugPanel):
     """
     Panel that displays the latest commit date
     """
     name = "Last Commit"
     has_content = True
-    template = Template(_TEMPLATE_MARKUP)
-
+    template = 'panels/debug_toolbar_git_commit.html'
+    
     def nav_title(self):
         return "Last Commit"
-
+    
     def nav_subtitle(self):
         if GIT_LOG:
-            return GIT_LOG[0]['date']
+            return GIT_LOG[0]['id'] + '\n' + GIT_LOG[0]['author_name']
         return ""
-
+    
     def url(self):
         return ''
-
+    
     def title(self):
         return "Recent Commits"
-
-    def content(self):
-        context = self.context.copy()
-        context.update({
+    
+    def process_response(self, request, response):
+        self.record_stats({
             'log': GIT_LOG,
             'commit_url': getattr(settings, 'GIT_COMMIT_URL', False)
         })
-        return self.template.render(Context(context))
