@@ -13,10 +13,11 @@ setup(
     license='BSD',
     packages=find_packages(exclude=('tests', 'example')),
     tests_require=[
-        'django>=1.5,<1.7',
+        'django>=1.5',
     ],
     test_suite='runtests.runtests',
     include_package_data=True,
+    zip_safe=False,
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
