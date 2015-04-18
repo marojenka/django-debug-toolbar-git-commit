@@ -11,7 +11,8 @@ Installation
 
 1. Install and configure [Django Debug Toolbar](https://github.com/django-debug-toolbar/django-debug-toolbar>).
 
-2. Add ``'debug_toolbar_git_panel.panel.RecentCommitsDebugPanel'`` to your ``DEBUG_TOOLBAR_PANELS``.
+2. Add ``'debug_toolbar_git_commit.panel.GitCommitStatus'`` to your ``DEBUG_TOOLBAR_PANELS``, 
+and ``'debug_toolbar_git_commit'`` to ``INSTALLED_APPS``. 
 
 
 Configuration
